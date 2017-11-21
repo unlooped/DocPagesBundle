@@ -1,0 +1,3 @@
+doc_pages_homepage:
+    path:     /
+    defaults: { _controller: DocPagesBundle:Default:index }

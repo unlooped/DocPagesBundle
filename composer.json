@@ -1,0 +1,9 @@
+{
+    "name": "unlooped/doc-pages-bundle",
+    "type": "project",
+    "require": {
+        "symfony/symfony": "2.8",
+        "sonata-project/admin-bundle": "3",
+        "sonata-project/media-bundle": "^3.8"
+    }
+}
