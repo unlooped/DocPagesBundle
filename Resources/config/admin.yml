@@ -4,5 +4,5 @@ services:
         class: Unlooped\DocPagesBundle\Admin\DocPageAdmin
         arguments: [~, Unlooped\DocPagesBundle\Entity\DocPage, DocPagesBundle:DocPageAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: DocPage }
+            - { name: sonata.admin, manager_type: orm, group: "Help Pages", label: "Pages" }
         public: true

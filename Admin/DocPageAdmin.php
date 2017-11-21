@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\UserBundle\Form\Type\SecurityRolesType;
 
 class DocPageAdmin extends AbstractAdmin
 {
@@ -49,9 +50,24 @@ class DocPageAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('content')
-            ->add('published')
+            ->tab('Document')
+                ->with('Document')
+                    ->add('title')
+                    ->add('content')
+                    ->add('published')
+                ->end()
+            ->end()
+            ->tab('Rights')
+                ->with('Groups', ['class' => 'col-md-6'])
+                    ->add('groups')
+                ->end()
+                ->with('Roles', ['class' => 'col-md-6'])
+                    ->add('roles', SecurityRolesType::class, [
+                        'expanded' => false,
+                        'multiple' => true,
+                    ])
+                ->end()
+            ->end()
         ;
     }
 

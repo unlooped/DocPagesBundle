@@ -2,6 +2,7 @@
 
 namespace Unlooped\DocPagesBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\Group;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,19 @@ class DocPage
      */
     private $published;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles;
+
+    /**
+     * @var Group
+     *
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\UserBundle\Entity\Group")
+     */
+    private $groups;
 
     /**
      * Get id
@@ -124,5 +138,56 @@ class DocPage
     {
         return $this->published;
     }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * Add group
+     *
+     * @param \Application\Sonata\UserBundle\Entity\Group $group
+     *
+     * @return DocPage
+     */
+    public function addGroup(\Application\Sonata\UserBundle\Entity\Group $group)
+    {
+        $this->groups[] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Remove group
+     *
+     * @param \Application\Sonata\UserBundle\Entity\Group $group
+     */
+    public function removeGroup(\Application\Sonata\UserBundle\Entity\Group $group)
+    {
+        $this->groups->removeElement($group);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
 }
 
