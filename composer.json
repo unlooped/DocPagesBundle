@@ -1,6 +1,7 @@
 {
     "name": "unlooped/doc-pages-bundle",
     "type": "project",
+    "license": "MIT",
     "require": {
         "symfony/symfony": "2.8",
         "sonata-project/admin-bundle": "3",
